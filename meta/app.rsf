@@ -1,0 +1,136 @@
+BasicInfo:
+    Title: "3DSLink"
+    CompanyCode: "00"
+    ProductCode: "CTR-P-3DSL"
+    ContentType: Application
+    Logo: Homebrew
+
+TitleInfo:
+    UniqueId: 0xF3D51
+    Category: Application
+
+Option:
+    UseOnSD: true
+    FreeProductCode: true
+    MediaFootPadding: false
+    EnableCrypt: false
+    EnableCompress: true
+
+AccessControlInfo:
+    CoreVersion: 2
+    DescVersion: 2
+    ReleaseKernelMajor: "02"
+    ReleaseKernelMinor: "33"
+    FileSystemAccess:
+        - DirectSdmc
+    MemoryType: Application
+    SystemMode: 64MB
+    IdealProcessor: 0
+    AffinityMask: 1
+    Priority: 16
+    MaxCpu: 0x9E
+    HandleTableSize: 0x200
+    DisableDebug: false
+    EnableForceDebug: false
+    CanWriteSharedPage: true
+    CanUsePrivilegedPriority: false
+    CanUseNonAlphabetAndNumber: true
+    PermitMainFunctionArgument: true
+    CanShareDeviceMemory: true
+    RunnableOnSleep: false
+    SpecialMemoryArrange: true
+    SystemModeExt: Legacy
+    CpuSpeed: 268MHz
+    EnableL2Cache: false
+    IORegisterMapping:
+        - 1ff00000-1ff7ffff
+    MemoryMapping:
+        - 1f000000-1f5fffff:r
+    SystemCallAccess:
+        ControlMemory: 1
+        QueryMemory: 2
+        ExitProcess: 3
+        GetProcessIdealProcessor: 6
+        CreateThread: 8
+        ExitThread: 9
+        SleepThread: 10
+        GetThreadPriority: 11
+        SetThreadPriority: 12
+        GetThreadIdealProcessor: 15
+        GetCurrentProcessorNumber: 17
+        CreateMutex: 19
+        ReleaseMutex: 20
+        CreateSemaphore: 21
+        ReleaseSemaphore: 22
+        CreateEvent: 23
+        SignalEvent: 24
+        ClearEvent: 25
+        CreateTimer: 26
+        SetTimer: 27
+        CancelTimer: 28
+        ClearTimer: 29
+        CreateMemoryBlock: 30
+        MapMemoryBlock: 31
+        UnmapMemoryBlock: 32
+        CreateAddressArbiter: 33
+        ArbitrateAddress: 34
+        CloseHandle: 35
+        WaitSynchronization1: 36
+        WaitSynchronizationN: 37
+        DuplicateHandle: 39
+        GetSystemTick: 40
+        GetHandleInfo: 41
+        GetSystemInfo: 42
+        GetProcessInfo: 43
+        GetThreadInfo: 44
+        ConnectToPort: 45
+        SendSyncRequest1: 46
+        SendSyncRequest2: 47
+        SendSyncRequest3: 48
+        SendSyncRequest4: 49
+        SendSyncRequest: 50
+        GetProcessId: 53
+        GetProcessIdOfThread: 54
+        GetThreadId: 55
+        GetResourceLimit: 56
+        GetResourceLimitLimitValues: 57
+        GetResourceLimitCurrentValues: 58
+        GetThreadContext: 59
+        Break: 60
+        OutputDebugString: 61
+    ServiceAccessControl:
+        - APT:U
+        - ac:u
+        - cfg:u
+        - fs:USER
+        - gsp::Gpu
+        - gsp::Lcd
+        - hid:USER
+        - ndm:u
+        - ps:ps
+        - ptm:u
+        - soc:U
+
+SystemControlInfo:
+    RemasterVersion: 0
+    StackSize: 0x20000
+    Dependency:
+        ac: 0x0004013000002402
+        am: 0x0004013000001502
+        cfg: 0x0004013000001702
+        codec: 0x0004013000001802
+        gpio: 0x0004013000001b02
+        gsp: 0x0004013000001c02
+        hid: 0x0004013000001d02
+        i2c: 0x0004013000001e02
+        mcu: 0x0004013000001f02
+        ndm: 0x0004013000002b02
+        nwm: 0x0004013000002d02
+        pdn: 0x0004013000002102
+        ps: 0x0004013000003102
+        ptm: 0x0004013000002202
+        socket: 0x0004013000002e02
+        spi: 0x0004013000002302
+
+RomFs:
+    RootPath: romfs

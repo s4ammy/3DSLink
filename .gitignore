@@ -1,0 +1,11 @@
+build/
+build-host/
+dist/
+.tools/
+node_modules/
+*.elf
+*.map
+*.smdh
+*.3dsx
+*.cia
+__pycache__/

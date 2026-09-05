@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111116">
+    <meta name="color-scheme" content="dark">
+    <title>3DSLink · Files</title>
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/app.js" defer></script>
+</head>
+<body>
+    <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7V5a2 2 0 0 1 2-2h5l3 3h6a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 8h18"/></symbol>
+        <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8" cy="8" r="1.5"/><path d="m3 17 5-5 4 4 4-7 5 8"/></symbol>
+        <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 15v5a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5"/></symbol>
+        <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v13m-5-5 5 5 5-5M4 15v5a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5"/></symbol>
+        <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H5a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9zM14 2v7h7M8 14h8m-8 4h5"/></symbol>
+        <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="7.5"/><path d="m16 16 5 5"/></symbol>
+        <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+        <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+        <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 5h12M9 12h12M9 19h12M3 5h1m-1 7h1m-1 7h1"/></symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/></symbol>
+        <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5M6 5a8 8 0 0 1 13 3M5 16a8 8 0 0 0 13 3"/></symbol>
+        <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+        <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="12" rx="2"/><path d="M8 10V6a4 4 0 0 1 8 0v4m-4 5v3"/></symbol>
+        <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2 8a16 16 0 0 1 20 0M5 12a11 11 0 0 1 14 0m-11 4a6 6 0 0 1 8 0m-4 4h.01"/></symbol>
+        <symbol id="i-sd" viewBox="0 0 24 24"><path d="M8 2h11a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7zM9 5v5m4-5v5m4-5v5M8 15h8v4H8z"/></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L20 5"/></symbol>
+        <symbol id="i-game" viewBox="0 0 24 24"><path d="M7 7h10c3 0 5 10 3 12-2 2-5-3-5-3H9s-3 5-5 3C2 17 4 7 7 7zM8 10v5m-2-2h4m6-2h.01m2 3h.01"/></symbol>
+    </svg>
+
+    <section id="pairScreen" class="pair-screen">
+        <div class="pair-brand"><img src="/icon.svg" width="38" height="38" alt=""><span>3DS<span class="brand-light">Link</span></span></div>
+        <div class="pair-card rounded">
+            <div class="console-art" aria-hidden="true"><div class="console-top"><svg class="icon"><use href="#i-wifi"/></svg></div><div class="console-bottom"><span>+</span><div></div><span>··</span></div></div>
+            <h1>Connect to 3DSLink</h1>
+            <p>Enter the four-digit PIN displayed on your 3DS.</p>
+            <form id="pairForm">
+                <label for="pin">Enter the PIN on your 3DS</label>
+                <input id="pin" class="pin-input rounded" name="pin" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="off" placeholder="••••" required aria-describedby="pairError">
+                <p id="pairError" class="form-error" role="alert"></p>
+                <button class="button primary rounded" id="pairButton" type="submit">Connect to 3DS <svg class="icon"><use href="#i-chevron"/></svg></button>
+            </form>
+            <div class="pair-foot"><svg class="icon"><use href="#i-lock"/></svg> PIN required to access the SD card</div>
+        </div>
+        <p class="subtle pair-caption">Keep 3DSLink open on your console while sharing.</p>
+    </section>
+
+    <div id="app" class="app" hidden>
+        <aside class="sidebar">
+            <a class="brand" href="/" aria-label="3DSLink home"><img src="/icon.svg" width="36" height="36" alt=""><span>3DS<span class="brand-light">Link</span><span class="version">v0.1</span></span></a>
+            <div class="sidebar-label">WORKSPACE</div>
+            <nav class="main-nav" aria-label="Files">
+                <button class="nav-item active rounded" data-location="/"><svg class="icon"><use href="#i-folder"/></svg><span>All files</span><svg class="icon nav-arrow"><use href="#i-chevron"/></svg></button>
+                <button class="nav-item rounded" data-location="/luma/screenshots"><svg class="icon"><use href="#i-image"/></svg><span>Screenshots</span></button>
+                <button class="nav-item rounded" data-location="/3ds"><svg class="icon"><use href="#i-game"/></svg><span>Homebrew</span></button>
+            </nav>
+            <div class="sidebar-label favourites-label">QUICK ACCESS</div>
+            <nav class="quick-nav" aria-label="Quick access"><button class="nav-item rounded" data-location="/DCIM"><span class="nav-dot peach"></span>Camera photos</button><button class="nav-item rounded" data-location="/3ds/Checkpoint/saves"><span class="nav-dot mint"></span>Save backups</button></nav>
+            <div class="sidebar-bottom">
+                <div class="console-card rounded"><div class="console-card-title"><svg class="icon"><use href="#i-game"/></svg><span>Nintendo 3DS</span><span class="online-dot"></span></div><span class="subtle">Connected on your network</span><span id="deviceAddress" class="device-address"></span></div>
+                <button id="logout" class="text-button"><svg class="icon"><use href="#i-lock"/></svg> Lock connection</button>
+            </div>
+        </aside>
+
+        <main>
+            <header class="topbar"><span>3DSLINK</span><div class="connection-pill"><span class="online-dot"></span> Connected</div></header>
+            <div class="content">
+                <section class="page-heading"><h1 id="pageTitle">Files</h1><button id="uploadButton" class="button primary rounded"><svg class="icon"><use href="#i-upload"/></svg>Upload files</button></section>
+
+                <section class="overview" aria-label="Console overview">
+                    <div class="storage-card rounded"><div class="card-heading"><span class="icon-box rounded"><svg class="icon"><use href="#i-sd"/></svg></span><span>SD card storage</span><span id="storagePercent" class="subtle">Checking…</span></div><div class="storage-numbers"><strong id="storageFree">...</strong><span>available</span></div><div class="storage-track"><div id="storageBar"></div></div><div class="storage-caption"><span id="storageUsed">Reading your SD card</span><span id="storageTotal"></span></div></div>
+                    <button id="screenshotShortcut" class="feature-card rounded"><div><h2>Screenshots</h2><p>/luma/screenshots</p><span class="feature-link">Open gallery <svg class="icon"><use href="#i-chevron"/></svg></span></div><svg class="icon gallery-icon"><use href="#i-image"/></svg></button>
+                </section>
+
+                <section id="filePanel" class="file-panel rounded" aria-label="File browser">
+                    <div class="browser-heading"><nav id="breadcrumbs" class="breadcrumbs" aria-label="Folder path"></nav><div class="browser-actions"><button id="newFolder" class="text-button"><svg class="icon"><use href="#i-plus"/></svg><span>New folder</span></button><button id="refresh" class="icon-button rounded" aria-label="Refresh folder"><svg class="icon"><use href="#i-refresh"/></svg></button></div></div>
+                    <div class="browser-toolbar"><label class="search rounded"><svg class="icon"><use href="#i-search"/></svg><input id="search" type="search" placeholder="Find something in this folder…" aria-label="Search loaded files"></label><div class="view-options"><label class="sort-label"><span class="sr-only">Sort files</span><select id="sort"><option value="name">Name</option><option value="newest">Newest first</option><option value="size">Largest first</option></select></label><div class="view-toggle rounded"><button id="listView" class="icon-button selected" aria-label="List view" aria-pressed="true"><svg class="icon"><use href="#i-list"/></svg></button><button id="gridView" class="icon-button" aria-label="Grid view" aria-pressed="false"><svg class="icon"><use href="#i-grid"/></svg></button></div></div></div>
+                    <div id="folderMessage" class="folder-message" role="status" hidden></div>
+                    <div id="fileHeader" class="file-header"><span>Name</span><span>Size</span><span>Modified</span><span></span></div>
+                    <div id="files" class="files" aria-live="polite"></div>
+                    <div id="emptyState" class="empty-state" hidden><span class="empty-icon"><svg class="icon"><use href="#i-folder"/></svg></span><h3 id="emptyTitle">Empty folder</h3><p id="emptyText">Drop files here or select Upload files.</p></div>
+                    <button id="loadMore" class="button secondary rounded load-more" hidden>Load more files</button>
+                    <footer class="browser-footer"><span id="fileCount">Loading files…</span><span><svg class="icon"><use href="#i-upload"/></svg> Drop files anywhere to upload</span></footer>
+                </section>
+                <footer class="page-footer"><span id="connectionAddress"></span><span>3DSLink / 0.1.0</span></footer>
+            </div>
+        </main>
+    </div>
+
+    <input id="fileInput" type="file" multiple hidden>
+    <div id="dropOverlay" class="drop-overlay" hidden><div class="rounded"><svg class="icon"><use href="#i-upload"/></svg><h2>Upload files</h2><p>Drop to upload to the open folder</p></div></div>
+    <section id="transferPanel" class="transfer-panel rounded" aria-label="Uploads" hidden><div class="transfer-heading"><h3><svg class="icon"><use href="#i-upload"/></svg>Transfer queue</h3><button id="closeTransfers" class="icon-button" aria-label="Close completed transfers"><svg class="icon"><use href="#i-close"/></svg></button></div><div id="transferList"></div><p class="transfer-note">Keep this page and 3DSLink open until finished.</p></section>
+    <dialog id="folderDialog" class="dialog rounded"><form id="folderForm"><div class="dialog-heading"><h2>New folder</h2><button type="button" class="icon-button" data-close="folderDialog" aria-label="Close"><svg class="icon"><use href="#i-close"/></svg></button></div><p>Create a folder in the current location.</p><label for="folderName">Folder name</label><input id="folderName" class="text-input rounded" maxlength="120" autocomplete="off" required placeholder="Folder name"><p id="folderError" class="form-error" role="alert"></p><button type="submit" class="button primary rounded">Create folder<svg class="icon"><use href="#i-plus"/></svg></button></form></dialog>
+    <dialog id="previewDialog" class="preview-dialog rounded"><div class="dialog-heading"><h2 id="previewName">Screenshot</h2><button class="icon-button" data-close="previewDialog" aria-label="Close preview"><svg class="icon"><use href="#i-close"/></svg></button></div><div class="preview-image"><img id="previewImage" alt=""></div><div class="preview-footer"><span id="previewDetails" class="subtle"></span><a id="previewDownload" class="button primary rounded" download><svg class="icon"><use href="#i-download"/></svg>Download image</a></div></dialog>
+    <div id="toast" class="toast rounded" role="status" hidden></div>
+</body>
+</html>

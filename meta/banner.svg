@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="128" viewBox="0 0 256 128">
+    <rect width="256" height="128" fill="#111116"/>
+    <rect x="8" y="8" width="240" height="112" rx="11.2" fill="#222130" stroke="#39364b"/>
+    <rect x="24" y="31" width="54" height="59" rx="5.4" fill="#babaff"/>
+    <rect x="30" y="37" width="42" height="26" rx="2.6" fill="#343147"/>
+    <path d="M33 72h10m-5-5v10m23-6h.1m6 4h.1" fill="none" stroke="#343147" stroke-width="3" stroke-linecap="round"/>
+    <text x="94" y="61" font-family="DejaVu Sans,sans-serif" font-size="24" font-weight="bold" fill="#babaff">3DSLink</text>
+    <text x="95" y="80" font-family="DejaVu Sans,sans-serif" font-size="8" fill="#c2bdcf">SD CARD FILE SHARING</text>
+</svg>
