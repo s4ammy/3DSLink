@@ -11,7 +11,9 @@
 #include <cstring>
 #include <dirent.h>
 #include <fcntl.h>
+#include <memory>
 #include <netinet/in.h>
+#include <new>
 #include <sys/select.h>
 #include <sys/socket.h>
 #include <sys/stat.h>
@@ -207,6 +209,11 @@ bool ThreeDsLink::CServer::start(std::string &error) {
 
     const int enabled = 1;
     setsockopt(listener, SOL_SOCKET, SO_REUSEADDR, &enabled, sizeof(enabled));
+#ifdef __3DS__
+    //Accepted sockets inherit this receive buffer from the listener.
+    const int receiveBufferSize = 32 * 1024;
+    setsockopt(listener, SOL_SOCKET, SO_RCVBUF, &receiveBufferSize, sizeof(receiveBufferSize));
+#endif
     sockaddr_in address{};
     address.sin_family = AF_INET;
     address.sin_port = htons(config.port);
@@ -684,6 +691,17 @@ void ThreeDsLink::CServer::uploadFile(int socket, const TRequest &request) {
         close(descriptor);
         std::remove(temporary.c_str());
         fail(socket, 500, "Could not open the upload file.");
+        return;
+    }
+
+    //Batch SD writes instead of using newlib's default 1 KiB file buffer.
+    const auto fileBufferSize = 256 * 1024;
+    auto fileBuffer = std::unique_ptr<char[]>(new (std::nothrow) char[fileBufferSize]);
+    if (fileBuffer == nullptr ||
+        std::setvbuf(file, fileBuffer.get(), _IOFBF, fileBufferSize) != 0) {
+        std::fclose(file);
+        std::remove(temporary.c_str());
+        fail(socket, 500, "Could not allocate the upload buffer.");
         return;
     }
 
